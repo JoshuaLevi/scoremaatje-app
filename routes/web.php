@@ -33,3 +33,7 @@ Route::post('/exercise', [ExerciseController::class, 'store'])->name('exercise.s
 Route::get('/exercise/{exercise}/edit', [ExerciseController::class, 'edit'])->name('exercise.edit');
 Route::put('/exercise/{exercise}/update', [ExerciseController::class, 'update'])->name('exercise.update');
 Route::delete('/exercise/{exercise}/destroy', [ExerciseController::class, 'destroy'])->name('exercise.destroy');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/exercise', [ExerciseController::class, 'index']) ->name('exercise.index');
+});
+

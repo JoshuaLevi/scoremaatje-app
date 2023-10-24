@@ -8,6 +8,8 @@
     <title>Document</title>
 </head>
 <body>
+
+@section('crud-content')
     <h1>Exercises</h1>
     <div>
         @if(session()->has('success'))
@@ -53,5 +55,6 @@
             @endforeach
         </table>
     </div>
+@endsection
 </body>
 </html>

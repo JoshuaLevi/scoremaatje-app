@@ -29,7 +29,7 @@ class ExerciseController extends Controller
 
         $newExercise = Models\Exercise::create($data);
 
-        return redirect(route('exercise.index'));
+        return redirect(route('home'));
     }
 
     public function edit(Models\Exercise $exercise){
@@ -47,11 +47,11 @@ class ExerciseController extends Controller
 
         $exercise->update($data);
 
-        return redirect(route('exercise.index'))->with('success', 'Exercise Updated Successfully');
+        return redirect(route('home'))->with('success', 'Exercise Updated Successfully');
     }
 
     public function destroy(Models\Exercise $exercise){
         $exercise->delete();
-        return redirect(route('exercise.index'))->with('success', 'Exercise Deleted Successfully');
+        return redirect(route('home'))->with('success', 'Exercise Deleted Successfully');
     }
 }

@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('username');
             $table->string('muscle');
             $table->string('description');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
         });
     }
 
