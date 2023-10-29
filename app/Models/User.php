@@ -12,11 +12,22 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function isAdmin() {
+        return $this->is_admin;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
+    public function exercises(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Exercise::class);
+    }
+
+
     protected $fillable = [
         'name',
         'email',

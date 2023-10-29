@@ -27,7 +27,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/exercise', [ExerciseController::class, 'index'])->name('exercise.index');
+//Route::get('/exercise/index', [ExerciseController::class, 'index'])->name('exercise.index');
 Route::get('/exercise/create', [ExerciseController::class, 'create'])->name('exercise.create');
 Route::post('/exercise', [ExerciseController::class, 'store'])->name('exercise.store');
 Route::get('/exercise/{exercise}/edit', [ExerciseController::class, 'edit'])->name('exercise.edit');
