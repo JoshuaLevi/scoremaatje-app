@@ -27,10 +27,10 @@ class HomeController extends Controller
     {
         if(Auth::user()->is_admin)
         {
-            return view('test2', ['exercises' => Exercise::all()]);
+            $exercises = Exercise::all();
         }else {
             $exercises = Exercise::where('user_id', Auth::user()->id)->get();
-            return view('test1', ['exercises' => $exercises, 'user_id' => Auth::user()->id]);
         }
+        return view('home', ['exercises' => $exercises, 'user_id' => Auth::user()->id]);
     }
 }
