@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exercise;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,8 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $exercises = Exercise::all();
-//        return view('exercises.index', ['exercises' => $exercises]);
-        return view('home', ['exercises' => $exercises]);
+        if(Auth::user()->is_admin)
+        {
+            $exercises = Exercise::all();
+        }else {
+            $exercises = Exercise::where('user_id', Auth::user()->id)->get();
+        }
+        return view('home', ['exercises' => $exercises, 'user_id' => Auth::user()->id]);
     }
 }

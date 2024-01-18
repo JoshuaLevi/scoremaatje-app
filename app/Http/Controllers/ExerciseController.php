@@ -49,7 +49,7 @@ class ExerciseController extends Controller
             $exercises = Exercise::all();
         } else {
             // Als de gebruiker geen admin is, haal alleen de exercises van de ingelogde gebruiker op.
-            $exercises = Exercise::where('user_id', $user->id)->get();
+            $exercises = Exercise::where('user_id', '=' ,$user->id)->get();
         }
 
         return view('exercises.index', compact('exercises'));
@@ -75,7 +75,8 @@ class ExerciseController extends Controller
             // Anders, gebruik de ID van de ingelogde gebruiker.
             $data['user_id'] = auth()->id();
         }
-
+        /*$data = [...$data, 'user_id'=>auth()->id()];*/
+        /*$data['user_id'] = auth()->id();*/
         $newExercise = Models\Exercise::create($data);
 
         return redirect(route('home'));
