@@ -35,6 +35,11 @@ class Exercise extends Model
         'username',
         'muscle',
         'description',
+        'user_id'
+    ];
+
+    protected $casts = [
+        'user_id'=>'int'
     ];
 
     public function user()
